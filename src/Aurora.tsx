@@ -27,7 +27,7 @@ void main(){
   col = mix(col, lav, blob(p,c1,0.55)*mix(0.55,0.70,uDark));
   col = mix(col, blue, blob(p,c2,0.5)*mix(0.45,0.55,uDark));
   col = mix(col, mint, blob(p,c3,0.55)*mix(0.45,0.55,uDark));
-  col = mix(col, lav, blob(p,m,0.35)*0.25);
+  col = mix(col, lav, blob(p,m,0.42)*mix(0.55,0.75,uDark));
   float g = fract(sin(dot(vUv*uRes, vec2(12.9898,78.233)))*43758.5453);
   col += (g-0.5)*mix(0.025, 0.04, uDark);
   gl_FragColor = vec4(col,1.0);
@@ -51,7 +51,7 @@ function Plane({ dark }: { dark: boolean }) {
   }, [])
   useFrame((_, d) => {
     u.uTime.value += d
-    u.uMouse.value.lerp(mouse.current, 0.04)
+    u.uMouse.value.lerp(mouse.current, 0.09)
     const max = document.body.scrollHeight - innerHeight
     u.uScroll.value += ((max > 0 ? scrollY / max : 0) - u.uScroll.value) * 0.05
     u.uRes.value.set(size.width, size.height)
