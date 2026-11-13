@@ -29,7 +29,6 @@ export default function Home() {
   const links: [string, string, string][] = [
     [t.emailMe, site.emailHref, '✉'],
     [t.linkedin, site.socials.linkedin, 'in'],
-    [t.instagram, site.socials.instagram, '◎'],
     [t.behance, site.socials.behance, 'Bē'],
   ]
 
@@ -98,20 +97,40 @@ export default function Home() {
                 <div className="card-visual">
                   {id === 'maze' ? (
                     <div className="card-metrics" aria-hidden>
-                      <ResponsiveImg image={cover} lang={lang} sizes="(max-width: 720px) 90vw, 320px" className="card-photo" />
+                      <ResponsiveImg image={cover} lang={lang} sizes="(max-width: 720px) 90vw, 320px" className="card-photo" decorative />
                       <div className="metric-float">
                         <div className="mf-row">
                           <span>{mazeMetrics.success.label[lang]}</span>
-                          <strong>{mazeMetrics.success.value}</strong>
+                          <strong>{mazeMetrics.success.value[lang]}</strong>
                         </div>
+                        <span className="mf-bar"><i /></span>
                         <div className="mf-grid">
-                          <div><span>{mazeMetrics.time.label[lang]}</span><b>{mazeMetrics.time.value}</b></div>
-                          <div><span>{mazeMetrics.misclick.label[lang]}</span><b>{mazeMetrics.misclick.value}</b></div>
+                          <div><span>{mazeMetrics.time.label[lang]}</span><b>{mazeMetrics.time.value[lang]}</b></div>
+                          <div><span>{mazeMetrics.misclick.label[lang]}</span><b>{mazeMetrics.misclick.value[lang]}</b></div>
                         </div>
                       </div>
                     </div>
+                  ) : id === 'public-services' ? (
+                    <div className="card-ds" aria-hidden>
+                      <div className="cds-row">
+                        <span className="cds-btn">{t.psChips.button}</span>
+                        <span className="cds-round"><IconArrow /></span>
+                      </div>
+                      <span className="cds-select">{t.psChips.select}<i>⌄</i></span>
+                      <div className="cds-row">
+                        <span className="cds-appt"><b className="mono">{t.psChips.appt}</b>{t.psChips.apptTime}</span>
+                        <span className="cds-col">
+                          <span className="cds-toggle"><i /></span>
+                          <span className="cds-tag">✓ {t.psChips.success}</span>
+                        </span>
+                      </div>
+                      <div className="cds-row">
+                        <span className="cds-swatches"><i /><i /><i /><i /></span>
+                        <span className="cds-aa">Aa</span>
+                      </div>
+                    </div>
                   ) : (
-                    <ResponsiveImg image={cover} lang={lang} sizes="(max-width: 720px) 90vw, 400px" className="card-photo" />
+                    <ResponsiveImg image={cover} lang={lang} sizes="(max-width: 720px) 90vw, 560px" className="card-photo" decorative />
                   )}
                 </div>
                 <span className="card-arrow" aria-hidden><IconArrow /></span>

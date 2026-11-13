@@ -11,6 +11,29 @@ export const nextOf: Record<ProjectId, ProjectId> = {
 type QA = { q: string; a: string }
 type Step = { title: string; desc: string }
 type Card = { title: string; desc: string }
+type Rec = { title: string; desc: string; impact?: string }
+
+export type LibCopy = {
+  srSummary: string
+  buttons: string
+  primary: string
+  hover: string
+  disabled: string
+  inputs: string
+  default: string
+  focus: string
+  error: string
+  placeholder: string
+  errorMsg: string
+  dropdown: string
+  open: string
+  selectOption: string
+  options: string[]
+  tags: string
+  tagList: string[]
+  icons: string
+  liveNote: string
+}
 
 export type ProjectCopy = {
   title: string
@@ -57,7 +80,8 @@ export type ProjectCopy = {
   findings?: { title: string; desc: string; impact?: string }[]
   recsTitle?: string
   recsIntro?: string
-  recs?: string[]
+  recs?: Rec[]
+  recsFramework?: string
   learningsTitle?: string
   keyLearningsTitle?: string
   keyLearnings?: string[]
@@ -70,6 +94,14 @@ export type ProjectCopy = {
   togetherIntro?: string
   figmaLabel?: string
   handwritten?: string
+  handNotes?: string[]
+  easeTitle?: string
+  easeQuestion?: string
+  easeLow?: string
+  easeHigh?: string
+  atomicTitle?: string
+  atomicLevels?: Step[]
+  lib?: LibCopy
 }
 
 export type UICopy = {
@@ -139,6 +171,10 @@ export type UICopy = {
   zoomIn: string
   zoomOut: string
   zoomHint: string
+  impactLevel: string
+  people: string
+  person: string
+  psChips: { button: string; select: string; appt: string; apptTime: string; success: string }
   pageNotFound: string
   backHome: string
 }
@@ -220,6 +256,10 @@ export const ui: Record<Lang, UICopy> = {
     zoomIn: 'Zoom in',
     zoomOut: 'Zoom out',
     zoomHint: 'Scroll or pinch to zoom · drag to pan · Esc to close',
+    impactLevel: 'Impact',
+    people: 'people',
+    person: 'person',
+    psChips: { button: 'Book appointment', select: 'Select a service', appt: 'Appointment', apptTime: 'Mon · 10:00', success: 'Success' },
     pageNotFound: 'This project could not be found.',
     backHome: 'Back to home',
   },
@@ -299,6 +339,10 @@ export const ui: Record<Lang, UICopy> = {
     zoomIn: 'Acercar',
     zoomOut: 'Alejar',
     zoomHint: 'Rueda o pellizco para zoom · arrastra para mover · Esc para cerrar',
+    impactLevel: 'Impacto',
+    people: 'personas',
+    person: 'persona',
+    psChips: { button: 'Agendar turno', select: 'Elige un trámite', appt: 'Turno', apptTime: 'Lun · 10:00', success: 'Listo' },
     pageNotFound: 'No se encontró este proyecto.',
     backHome: 'Volver al inicio',
   },
@@ -387,6 +431,8 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'Feature prioritization based on user behavior.',
         'Accessibility improvements and edge-case scenarios.',
       ],
+      outcomeTitle: 'Outcome',
+      handNotes: ['All in\none place ♡'],
       figmaLabel: 'View the full prototype on Figma',
       handwritten: 'Happier\npets,\nbrighter\ntomorrows',
     },
@@ -471,6 +517,8 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'La priorización de funciones a partir del comportamiento real.',
         'Mejoras de accesibilidad y casos límite.',
       ],
+      outcomeTitle: 'Balance del proyecto',
+      handNotes: ['Todo en un\nsolo lugar ♡'],
       figmaLabel: 'Ver el prototipo completo en Figma',
       handwritten: 'Mascotas\nmás felices,\nmañanas más\nbrillantes',
     },
@@ -513,11 +561,11 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       processIntro:
         'I planned and conducted a moderated usability test through Maze, analyzing quantitative and qualitative data to identify opportunities for improvement.',
       processSteps: [
-        { title: 'Test setup', desc: 'Defined objectives and the most critical user tasks.' },
-        { title: 'Participants', desc: 'People from the target audience: attendees of innovation events.' },
-        { title: 'Testing in Maze', desc: 'An interactive prototype and a clear task scenario.' },
-        { title: 'Analysis', desc: 'Success rate, time, misclicks, drop-off, and qualitative feedback.' },
-        { title: 'Recommendations', desc: 'Insights turned into actionable improvements, prioritized by impact.' },
+        { title: 'Research planning', desc: 'Defined testing objectives and selected the most critical user tasks to evaluate.' },
+        { title: 'Prototype testing', desc: 'Conducted usability testing through Maze using an interactive prototype.' },
+        { title: 'Metrics collection', desc: 'Analyzed success rate, average completion time, misclicks and drop-off rate.' },
+        { title: 'Findings analysis', desc: 'Identified usability pain points and areas that required refinement.' },
+        { title: 'Recommendation prioritization', desc: 'Translated insights into actionable recommendations using an Impact vs. Effort framework.' },
       ],
       impactTitle: 'Impact',
       impactIntro:
@@ -533,24 +581,30 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
           impact: 'High',
         },
         {
-          title: 'Unintuitive controls',
-          desc: 'A 22% misclick rate pointed to buttons and interaction targets that were not as clear as they needed to be.',
+          title: 'Unintuitive vote buttons',
+          desc: 'A 22% misclick rate and an average ease score of 3.6/5 — with 33% of participants rating it low — showed the vote buttons were not as clear or well placed as they needed to be.',
           impact: 'High',
         },
         {
           title: 'Missing information',
-          desc: 'Some participants looked for more context about the speakers before deciding.',
+          desc: 'Some participants lacked context to decide quickly (“additional information for each option”): supporting content about each speaker was insufficient or hard to see.',
           impact: 'Medium',
+        },
+        {
+          title: 'A solid base to polish',
+          desc: 'Only 22% expressed total satisfaction (“I liked it, I wouldn’t change anything”): the design has a solid base, but it can be refined for a more consistent experience.',
         },
       ],
       recsTitle: 'Recommendations',
       recsIntro: 'Based on the findings, I proposed the following improvements.',
       recs: [
-        'Add immediate visual confirmation after voting — a message or animation that the vote was recorded.',
-        'A confirmation pop-up before submitting, to prevent accidental votes and allow people to go back.',
-        'A success state (“Vote registered successfully”) to close the task with a clear sense of control.',
-        'Micro-adjustments to visual consistency — alignment, spacing and type — without changing the existing flow.',
+        { title: 'Immediate visual feedback', desc: 'A message or animation confirming the vote was recorded, to reduce uncertainty and selection errors.', impact: 'High' },
+        { title: 'Clearer vote buttons', desc: 'Make the vote button the most prominent element: stronger contrast, a clear “check” or “vote” icon, and placed close to the speaker’s content.', impact: 'High' },
+        { title: 'Short speaker bios', desc: 'One line about each speaker’s experience or talk topic, to lower cognitive load and support faster, more confident decisions.', impact: 'Medium' },
+        { title: 'Confirm, then close the loop', desc: 'A confirmation pop-up before submitting prevents accidental votes and lets people go back; a “Vote registered successfully” state ends the task with a clear sense of control.' },
+        { title: 'Visual consistency micro-adjustments', desc: 'Refine alignment, spacing and typography to reinforce perceived quality, without changing the existing flow.' },
       ],
+      recsFramework: 'Prioritized with an Impact vs. Effort framework. Impact levels come from the findings summary.',
       learningsTitle: 'Learnings & Next Steps',
       keyLearningsTitle: 'Key learnings',
       keyLearnings: [
@@ -562,19 +616,26 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'User behavior often reveals friction points that are not visible during the design phase.',
       improvedQ: 'What improved?',
       improved: [
-        'A clearer picture of friction in key interactions.',
-        'Concrete, prioritized recommendations for the primary flow.',
-        'Better alignment between what people expected and how the interface behaved.',
+        'Improved clarity in key interactions.',
+        'Reduced friction within primary user flows.',
+        'Better alignment between user expectations and interface behavior.',
       ],
       nextQ: 'What would I validate next?',
       whatsNextTitle: 'Next steps',
       whatsNext: [
-        'Whether the proposed changes reduce hesitation and misclicks.',
+        'Whether the proposed changes increase task completion rates.',
         'Whether revised flows reduce cognitive load.',
-        'User satisfaction after the improvements are implemented.',
+        'User satisfaction after implementation.',
       ],
       quote: 'Testing with real users turned assumptions into actionable insights.',
       handwritten: 'Real users.\nReal insights.\nA better product.',
+      outcomeTitle: 'Outcome',
+      learnedQ: 'What did I learn?',
+      handNotes: ['Everyone completed\nthe task!'],
+      easeTitle: 'Ease of choosing a speaker',
+      easeQuestion: '“How easy was it to choose a speaker?” Opinion scale from 1 to 5, 9 responses, average 3.6.',
+      easeLow: 'Harder',
+      easeHigh: 'Easier',
       figmaLabel: 'View full report',
     },
     es: {
@@ -614,11 +675,11 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       processIntro:
         'Planifiqué y realicé una prueba de usabilidad a través de Maze, y analicé datos cuantitativos y cualitativos para identificar oportunidades de mejora.',
       processSteps: [
-        { title: 'Preparación', desc: 'Definí los objetivos y las tareas de usuario más críticas.' },
-        { title: 'Participantes', desc: 'Personas del público objetivo: asistentes a eventos de innovación.' },
-        { title: 'Prueba en Maze', desc: 'Un prototipo interactivo y un escenario de tarea claro.' },
-        { title: 'Análisis', desc: 'Tasa de éxito, tiempo, clics erróneos, abandono y comentarios cualitativos.' },
-        { title: 'Recomendaciones', desc: 'Hallazgos convertidos en mejoras accionables, priorizadas por impacto.' },
+        { title: 'Planificación de la investigación', desc: 'Definí los objetivos de la prueba y elegí las tareas de usuario más críticas para evaluar.' },
+        { title: 'Prueba del prototipo', desc: 'Realicé la prueba de usabilidad en Maze con un prototipo interactivo.' },
+        { title: 'Recolección de métricas', desc: 'Analicé la tasa de éxito, el tiempo promedio de completado, los clics erróneos y la tasa de abandono.' },
+        { title: 'Análisis de hallazgos', desc: 'Identifiqué los puntos de dolor de usabilidad y las áreas que necesitaban ajustes.' },
+        { title: 'Priorización de recomendaciones', desc: 'Convertí los insights en recomendaciones accionables con un marco de Impacto vs. Esfuerzo.' },
       ],
       impactTitle: 'Impacto',
       impactIntro:
@@ -634,24 +695,30 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
           impact: 'Alto',
         },
         {
-          title: 'Controles poco intuitivos',
-          desc: 'Una tasa de clics erróneos del 22% señaló botones y zonas de interacción que no eran tan claros como debían.',
+          title: 'Botones de voto poco intuitivos',
+          desc: 'Una tasa de clics erróneos del 22% y una facilidad promedio de 3,6/5 — con un 33% de participantes en niveles bajos — mostraron que los botones de voto no eran tan claros ni estaban tan bien ubicados como debían.',
           impact: 'Alto',
         },
         {
           title: 'Información insuficiente',
-          desc: 'Algunas personas buscaron más contexto sobre los oradores antes de decidir.',
+          desc: 'Algunas personas echaron de menos contexto para decidir rápido (“información adicional de cada opción”): el contenido de apoyo sobre cada orador era insuficiente o poco visible.',
           impact: 'Medio',
+        },
+        {
+          title: 'Una base sólida para pulir',
+          desc: 'Solo un 22% expresó satisfacción total (“así me gustó, no cambiaría nada”): el diseño tiene una base sólida, pero puede optimizarse para una experiencia más consistente.',
         },
       ],
       recsTitle: 'Recomendaciones',
       recsIntro: 'A partir de los hallazgos, propuse estas mejoras.',
       recs: [
-        'Sumar confirmación visual inmediata después de votar: un mensaje o una animación de que el voto quedó registrado.',
-        'Un pop-up de confirmación antes de enviar, para evitar votos accidentales y permitir volver atrás.',
-        'Un estado de éxito (“Voto registrado con éxito”) que cierre la tarea con una sensación clara de control.',
-        'Microajustes de consistencia visual — alineación, espaciado y tipografía — sin alterar el flujo existente.',
+        { title: 'Feedback visual inmediato', desc: 'Un mensaje o una animación que confirme que el voto quedó registrado, para reducir la incertidumbre y los errores de selección.', impact: 'Alto' },
+        { title: 'Botones de voto más claros', desc: 'Que el botón de voto sea el elemento más destacado: más contraste, un ícono claro de “check” o “votar” y ubicado junto al contenido del orador.', impact: 'Alto' },
+        { title: 'Reseñas breves de oradores', desc: 'Una línea sobre la experiencia o el tema de charla de cada orador, para reducir la carga cognitiva y decidir más rápido y con más seguridad.', impact: 'Medio' },
+        { title: 'Confirmar y cerrar el ciclo', desc: 'Un pop-up de confirmación antes de enviar evita votos accidentales y permite retroceder; un estado “Voto registrado con éxito” cierra la tarea con una sensación clara de control.' },
+        { title: 'Microajustes de consistencia visual', desc: 'Afinar alineación, espaciado y tipografía para reforzar la percepción de calidad, sin alterar el flujo existente.' },
       ],
+      recsFramework: 'Priorizadas con un marco de Impacto vs. Esfuerzo. Los niveles de impacto vienen del resumen de hallazgos.',
       learningsTitle: 'Aprendizajes y próximos pasos',
       keyLearningsTitle: 'Aprendizajes clave',
       keyLearnings: [
@@ -663,19 +730,26 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'El comportamiento de las personas suele revelar fricciones que no se ven en la etapa de diseño.',
       improvedQ: '¿Qué mejoró?',
       improved: [
-        'Una visión más clara de la fricción en las interacciones clave.',
-        'Recomendaciones concretas y priorizadas para el flujo principal.',
+        'Más claridad en las interacciones clave.',
+        'Menos fricción en los flujos principales.',
         'Mejor alineación entre lo que las personas esperaban y cómo se comportaba la interfaz.',
       ],
       nextQ: '¿Qué validaría a continuación?',
       whatsNextTitle: 'Próximos pasos',
       whatsNext: [
-        'Si los cambios propuestos reducen la duda y los clics erróneos.',
-        'Si los flujos revisados disminuyen la carga cognitiva.',
-        'La satisfacción de las personas después de implementar las mejoras.',
+        'Si los cambios propuestos aumentan la tasa de tareas completadas.',
+        'Si los flujos revisados reducen la carga cognitiva.',
+        'La satisfacción de las personas después de implementarlos.',
       ],
       quote: 'Probar con personas reales convirtió las suposiciones en insights accionables.',
       handwritten: 'Personas reales.\nInsights reales.\nUn mejor producto.',
+      outcomeTitle: 'Balance del proyecto',
+      learnedQ: '¿Qué aprendí?',
+      handNotes: ['¡Todas completaron\nla tarea!'],
+      easeTitle: 'Facilidad para elegir orador',
+      easeQuestion: '“¿Qué tan fácil te resultó elegir al orador?” Escala de opinión de 1 a 5, 9 respuestas, promedio 3,6.',
+      easeLow: 'Más difícil',
+      easeHigh: 'Más fácil',
       figmaLabel: 'Ver el informe completo',
     },
   },
@@ -723,11 +797,11 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'I applied Atomic Design principles to create a structured and scalable component system.',
       processSteps: [
         { title: 'Interface analysis', desc: 'Reviewed the provided interface and decomposed it into reusable building blocks.' },
-        { title: 'Atoms', desc: 'Basic elements: icons, labels, inputs and buttons.' },
-        { title: 'Molecules', desc: 'Combinations of those elements into small, reusable groups.' },
-        { title: 'Organisms', desc: 'Functional sections assembled from molecules.' },
-        { title: 'Templates & screens', desc: 'The real interface, rebuilt exclusively from component instances.' },
-        { title: 'Organization', desc: 'Naming conventions, hierarchy, variants and usage guidelines.' },
+        { title: 'Atomic Design', desc: 'Organized components following Atomic Design principles: atoms, molecules and organisms.' },
+        { title: 'Component creation', desc: 'Built reusable UI components with multiple interaction states.' },
+        { title: 'Variants & documentation', desc: 'Created structured variants and documented usage guidelines to ensure consistency.' },
+        { title: 'Screen assembly', desc: 'Rebuilt the final interface exclusively using component instances.' },
+        { title: 'Design system organization', desc: 'Established naming conventions, hierarchy and a scalable component architecture.' },
       ],
       libraryTitle: 'Component library',
       libraryIntro: 'A set of reusable, flexible and accessible components — captured in the project’s Atomic Design board.',
@@ -735,16 +809,16 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       togetherIntro: 'Components in action: the final screens were built entirely with the design system.',
       resultsTitle: 'Results & Impact',
       resultsIntro: 'A solid foundation for a consistent and scalable product.',
+      // TODO(Melisa): the layout mockup showed 12 components · 32 variants · 3 screen states · 100% instances.
+      // Those counts are not in the case-study document, so they are not rendered. Confirm them to add back.
       stats: [
-        { value: '12', label: 'Components' },
-        { value: '32', label: 'Variants' },
-        { value: '3', label: 'Screen states' },
-        { value: '100%', label: 'Built with instances' },
+        { value: '3', label: 'Atomic levels: atoms, molecules and organisms' },
+        { value: '100%', label: 'Final screens rebuilt from component instances' },
       ],
       impactTitle: 'Impact',
       impactIntro:
-        'The project established a foundational design system and demonstrated the ability to think beyond individual screens by designing scalable, reusable UI solutions.',
-      learnedQ: 'What I learned',
+        'The project established a foundational design system and demonstrated my ability to think beyond individual screens by designing scalable, reusable UI solutions.',
+      learnedQ: 'What did I learn?',
       learned:
         'A well-structured design system accelerates design decisions and improves collaboration between designers and developers.',
       keyLearningsTitle: 'What I learned',
@@ -769,6 +843,36 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'Expansion to more complex user flows.',
       ],
       handwritten: 'Interfaces\nthat work\nfor everyone',
+      outcomeTitle: 'Outcome',
+      handNotes: ['Consistent components.\nBetter experiences.'],
+      atomicTitle: 'Atomic Design levels',
+      atomicLevels: [
+        { title: 'Atoms', desc: 'Basic elements: icons, labels, inputs and buttons.' },
+        { title: 'Molecules', desc: 'Combinations of elements: cards, dropdowns and time slots.' },
+        { title: 'Organisms', desc: 'Functional sections: the time grid and the service selector.' },
+        { title: 'Templates & screens', desc: 'The real interface, built only from component instances.' },
+      ],
+      lib: {
+        srSummary: 'Live specimen of the design system recreated in code: buttons in primary, hover and disabled states; inputs in default, focus and error states; a dropdown, closed and open; status tags; and the icon set.',
+        buttons: 'Buttons',
+        primary: 'Primary',
+        hover: 'Hover',
+        disabled: 'Disabled',
+        inputs: 'Inputs',
+        default: 'Default',
+        focus: 'Focus',
+        error: 'Error',
+        placeholder: 'Type here…',
+        errorMsg: 'This field is required',
+        dropdown: 'Dropdown',
+        open: 'Open',
+        selectOption: 'Select a service',
+        options: ['Renew ID', 'Driver’s licence', 'Proof of address'],
+        tags: 'Tags',
+        tagList: ['Default', 'In progress', 'Success', 'Warning', 'Error'],
+        icons: 'Icons',
+        liveNote: 'Recreated in code for this site, following the Figma components.',
+      },
       figmaLabel: 'Explore the full component library on Figma',
     },
     es: {
@@ -813,12 +917,12 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       processIntro:
         'Apliqué los principios de Atomic Design para crear un sistema de componentes estructurado y escalable.',
       processSteps: [
-        { title: 'Análisis de la interfaz', desc: 'Revisé la interfaz recibida y la descomponí en bloques reutilizables.' },
-        { title: 'Átomos', desc: 'Elementos básicos: iconos, etiquetas, campos y botones.' },
-        { title: 'Moléculas', desc: 'Combinaciones de esos elementos en grupos pequeños y reutilizables.' },
-        { title: 'Organismos', desc: 'Secciones funcionales armadas a partir de moléculas.' },
-        { title: 'Plantillas y pantallas', desc: 'La interfaz real, reconstruida únicamente con instancias de componentes.' },
-        { title: 'Organización', desc: 'Convenciones de nombre, jerarquía, variantes y guías de uso.' },
+        { title: 'Análisis de la interfaz', desc: 'Revisé la interfaz recibida y la descompuse en bloques reutilizables.' },
+        { title: 'Atomic Design', desc: 'Organicé los componentes según los principios de Atomic Design: átomos, moléculas y organismos.' },
+        { title: 'Creación de componentes', desc: 'Construí componentes de interfaz reutilizables con varios estados de interacción.' },
+        { title: 'Variantes y documentación', desc: 'Creé variantes estructuradas y documenté guías de uso para asegurar la consistencia.' },
+        { title: 'Armado de pantallas', desc: 'Reconstruí la interfaz final usando únicamente instancias de componentes.' },
+        { title: 'Organización del sistema', desc: 'Definí convenciones de nombre, jerarquía y una arquitectura de componentes escalable.' },
       ],
       libraryTitle: 'Librería de componentes',
       libraryIntro: 'Un conjunto de componentes reutilizables, flexibles y accesibles, documentado en el tablero de Atomic Design del proyecto.',
@@ -826,16 +930,16 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       togetherIntro: 'Los componentes en acción: las pantallas finales se armaron por completo con el sistema de diseño.',
       resultsTitle: 'Resultados e impacto',
       resultsIntro: 'Una base sólida para un producto consistente y escalable.',
+      // TODO(Melisa): the layout mockup showed 12 components · 32 variants · 3 screen states · 100% instances.
+      // Those counts are not in the case-study document, so they are not rendered. Confirm them to add back.
       stats: [
-        { value: '12', label: 'Componentes' },
-        { value: '32', label: 'Variantes' },
-        { value: '3', label: 'Estados de pantalla' },
-        { value: '100%', label: 'Construido con instancias' },
+        { value: '3', label: 'Niveles atómicos: átomos, moléculas y organismos' },
+        { value: '100%', label: 'Pantallas finales reconstruidas con instancias de componentes' },
       ],
       impactTitle: 'Impacto',
       impactIntro:
-        'El proyecto dejó un sistema de diseño fundacional y mostró la capacidad de pensar más allá de pantallas sueltas, diseñando soluciones de interfaz escalables y reutilizables.',
-      learnedQ: 'Qué aprendí',
+        'El proyecto dejó un sistema de diseño fundacional y demostró mi capacidad de pensar más allá de pantallas sueltas, diseñando soluciones de interfaz escalables y reutilizables.',
+      learnedQ: '¿Qué aprendí?',
       learned:
         'Un sistema de diseño bien estructurado acelera las decisiones y mejora la colaboración entre diseño y desarrollo.',
       keyLearningsTitle: 'Qué aprendí',
@@ -860,20 +964,61 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'La expansión a flujos de usuario más complejos.',
       ],
       handwritten: 'Interfaces\nque funcionan\npara todas\nlas personas',
+      outcomeTitle: 'Balance del proyecto',
+      handNotes: ['Componentes consistentes.\nMejores experiencias.'],
+      atomicTitle: 'Niveles de Atomic Design',
+      atomicLevels: [
+        { title: 'Átomos', desc: 'Elementos básicos: iconos, etiquetas, campos y botones.' },
+        { title: 'Moléculas', desc: 'Combinaciones de elementos: tarjetas, desplegables y franjas horarias.' },
+        { title: 'Organismos', desc: 'Secciones funcionales: la grilla de horarios y el selector de trámite.' },
+        { title: 'Plantillas y pantallas', desc: 'La interfaz real, armada solo con instancias de componentes.' },
+      ],
+      lib: {
+        srSummary: 'Muestra en vivo del sistema de diseño recreado en código: botones en estado principal, hover y deshabilitado; campos en estado por defecto, foco y error; un desplegable cerrado y abierto; etiquetas de estado; y el set de iconos.',
+        buttons: 'Botones',
+        primary: 'Principal',
+        hover: 'Hover',
+        disabled: 'Deshabilitado',
+        inputs: 'Campos',
+        default: 'Por defecto',
+        focus: 'Foco',
+        error: 'Error',
+        placeholder: 'Escribe aquí…',
+        errorMsg: 'Este campo es obligatorio',
+        dropdown: 'Desplegable',
+        open: 'Abierto',
+        selectOption: 'Elige un trámite',
+        options: ['Renovar DNI', 'Licencia de conducir', 'Certificado de domicilio'],
+        tags: 'Etiquetas',
+        tagList: ['Por defecto', 'En curso', 'Éxito', 'Advertencia', 'Error'],
+        icons: 'Iconos',
+        liveNote: 'Recreado en código para este sitio, siguiendo los componentes de Figma.',
+      },
       figmaLabel: 'Explorar la librería completa en Figma',
     },
   },
 }
 
-/** Maze metrics taken from the project's own "Métricas clave" slide, not the layout mockup. */
-export const mazeMetrics = {
-  success: { value: '100%', label: { en: 'Task success rate', es: 'Tasa de éxito' } },
-  time: { value: '83.3s', label: { en: 'Avg. completion time', es: 'Tiempo promedio' } },
-  misclick: { value: '22%', label: { en: 'Misclick rate', es: 'Clics erróneos' } },
-  dropoff: { value: '0%', label: { en: 'Drop-off rate', es: 'Tasa de abandono' } },
-  responses: { value: '9', label: { en: 'Responses', es: 'Respuestas' } },
-  ease: { value: '3.6 / 5', label: { en: 'Ease of choosing a speaker', es: 'Facilidad para elegir orador' } },
+/**
+ * Maze figures — every value comes from Melisa's own slides:
+ *  - “Métricas clave” (slide 3): 100% success, 0% drop-off, 83.3 s avg. duration, 22% misclicks, 9 responses
+ *  - “Hallazgo 2” / “Hallazgo 4” (slides 6, 8): ease score 3.6 / 5 and its 1–5 distribution
+ * The layout mockup's numbers (87% success, 42 s, 12% misclicks, 83.3% satisfaction, % deltas,
+ * task chart 100/83/67/100) are NOT used — they are not in her slides or document.
+ */
+type L = Record<Lang, string>
+export type Metric = { value: L; label: L }
+export const mazeMetrics: Record<'success' | 'time' | 'misclick' | 'dropoff' | 'responses' | 'ease', Metric> = {
+  success: { value: { en: '100%', es: '100%' }, label: { en: 'Task success rate', es: 'Tasa de éxito' } },
+  time: { value: { en: '83.3s', es: '83,3 s' }, label: { en: 'Avg. completion time', es: 'Tiempo promedio' } },
+  misclick: { value: { en: '22%', es: '22%' }, label: { en: 'Misclick rate', es: 'Clics erróneos' } },
+  dropoff: { value: { en: '0%', es: '0%' }, label: { en: 'Drop-off rate', es: 'Tasa de abandono' } },
+  responses: { value: { en: '9', es: '9' }, label: { en: 'Responses', es: 'Respuestas' } },
+  ease: { value: { en: '3.6 / 5', es: '3,6 / 5' }, label: { en: 'Ease of choosing a speaker', es: 'Facilidad para elegir orador' } },
 }
+
+/** “How easy was it to choose a speaker?” — people per rating 1→5 (9 responses), from the “Hallazgo 4” slide. */
+export const mazeEase = [1, 1, 1, 4, 2]
 
 export const titles = {
   home: {

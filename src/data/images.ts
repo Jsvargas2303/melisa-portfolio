@@ -27,6 +27,8 @@ const mz = (n: number, alt: Record<Lang, string>): Img => ({
   alt,
 })
 
+// Maze: Melisa's slide 9 (“Propuestas de mejora 1”) is a title-only divider with no content, so it is skipped;
+// the remaining 9 slides keep her numbering order (2, 3, 4, 5, 6, 7, 8, 10, Conclusiones).
 export const projectImages: Record<ProjectId, Img[]> = {
   pawmate: [
     pm(1, {
@@ -104,16 +106,16 @@ export const projectImages: Record<ProjectId, Img[]> = {
       es: 'Hallazgo 1, con comentarios de participantes: el flujo se puede completar, pero un 22% de clics erróneos y dudas sobre si el voto quedó registrado señalan un feedback de confirmación débil.',
     }),
     mz(5, {
-      en: 'Finding 2: analysis of unintuitive controls on the speaker-selection screen, with a recommended design direction.',
-      es: 'Hallazgo 2: análisis de controles poco intuitivos en la pantalla de elección de orador, con una dirección de diseño recomendada.',
+      en: 'Finding 2: perceived ease averaged 3.6 out of 5, with 33% of participants rating it low; a click heatmap of the speaker-selection screen and a recommendation to make the vote buttons more prominent.',
+      es: 'Hallazgo 2: la facilidad percibida promedió 3,6 sobre 5, con un 33% de participantes en niveles bajos; un mapa de calor de clics de la pantalla de elección de orador y la recomendación de destacar más los botones de voto.',
     }),
     mz(6, {
-      en: 'Finding 3: limited information about speakers left some participants wanting more context before voting.',
-      es: 'Hallazgo 3: la información limitada sobre los oradores hizo que algunas personas pidieran más contexto antes de votar.',
+      en: 'Finding 3: limited information about speakers left some participants wanting more context before voting; the recommendation is a short bio for each speaker.',
+      es: 'Hallazgo 3: la información limitada sobre los oradores hizo que algunas personas pidieran más contexto antes de votar; la recomendación es una reseña breve de cada orador.',
     }),
     mz(7, {
-      en: 'Finding 4: ease-of-choice ratings averaged 3.6 out of 5 across 9 responses, with a recommendation to refine visual consistency.',
-      es: 'Hallazgo 4: la facilidad para elegir orador promedió 3,6 sobre 5 en 9 respuestas, con la recomendación de afinar la consistencia visual.',
+      en: 'Finding 4: only 22% expressed total satisfaction (“I liked it, I wouldn’t change anything”); an ease-rating chart averaging 3.6 out of 5 across 9 responses, and a recommendation to refine visual consistency.',
+      es: 'Hallazgo 4: solo un 22% expresó satisfacción total (“así me gustó, no cambiaría nada”); un gráfico de facilidad con promedio de 3,6 sobre 5 en 9 respuestas y la recomendación de afinar la consistencia visual.',
     }),
     mz(8, {
       en: 'Improvement proposal: a confirmation pop-up before the vote is submitted, and a success screen that says the vote was registered.',
