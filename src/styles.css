@@ -73,7 +73,7 @@ html { background: var(--bg); scroll-behavior: auto; }
 body {
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--bg);
+  background: transparent;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   min-height: 100%;
