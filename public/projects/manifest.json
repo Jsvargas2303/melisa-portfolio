@@ -1,0 +1,296 @@
+{
+  "pawmate": [
+    {
+      "id": "pawmate-01",
+      "src": "Desktop - 1.png",
+      "width": 1400,
+      "height": 1024,
+      "variants": {
+        "640": "projects/pawmate/01-640.webp",
+        "960": "projects/pawmate/01-960.webp",
+        "1400": "projects/pawmate/01-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-02",
+      "src": "Desktop - 2.png",
+      "width": 1400,
+      "height": 1024,
+      "variants": {
+        "640": "projects/pawmate/02-640.webp",
+        "960": "projects/pawmate/02-960.webp",
+        "1400": "projects/pawmate/02-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-03",
+      "src": "Desktop - 3.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/03-640.webp",
+        "960": "projects/pawmate/03-960.webp",
+        "1400": "projects/pawmate/03-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-04",
+      "src": "Desktop - 4.png",
+      "width": 1400,
+      "height": 1024,
+      "variants": {
+        "640": "projects/pawmate/04-640.webp",
+        "960": "projects/pawmate/04-960.webp",
+        "1400": "projects/pawmate/04-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-05",
+      "src": "Desktop - 5.png",
+      "width": 1400,
+      "height": 1120,
+      "variants": {
+        "640": "projects/pawmate/05-640.webp",
+        "960": "projects/pawmate/05-960.webp",
+        "1400": "projects/pawmate/05-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-06",
+      "src": "Desktop - 6.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/06-640.webp",
+        "960": "projects/pawmate/06-960.webp",
+        "1400": "projects/pawmate/06-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-07",
+      "src": "Desktop - 7.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/07-640.webp",
+        "960": "projects/pawmate/07-960.webp",
+        "1400": "projects/pawmate/07-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-08",
+      "src": "Desktop - 8.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/08-640.webp",
+        "960": "projects/pawmate/08-960.webp",
+        "1400": "projects/pawmate/08-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-09",
+      "src": "Desktop - 9.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/09-640.webp",
+        "960": "projects/pawmate/09-960.webp",
+        "1400": "projects/pawmate/09-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-10",
+      "src": "Desktop - 10.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/10-640.webp",
+        "960": "projects/pawmate/10-960.webp",
+        "1400": "projects/pawmate/10-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-11",
+      "src": "Desktop - 11.png",
+      "width": 1400,
+      "height": 1038,
+      "variants": {
+        "640": "projects/pawmate/11-640.webp",
+        "960": "projects/pawmate/11-960.webp",
+        "1400": "projects/pawmate/11-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-12",
+      "src": "Desktop - 12.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/12-640.webp",
+        "960": "projects/pawmate/12-960.webp",
+        "1400": "projects/pawmate/12-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-13",
+      "src": "Desktop - 13.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/13-640.webp",
+        "960": "projects/pawmate/13-960.webp",
+        "1400": "projects/pawmate/13-1400.webp"
+      }
+    },
+    {
+      "id": "pawmate-14",
+      "src": "Desktop - 14.png",
+      "width": 1400,
+      "height": 1171,
+      "variants": {
+        "640": "projects/pawmate/14-640.webp",
+        "960": "projects/pawmate/14-960.webp",
+        "1400": "projects/pawmate/14-1400.webp"
+      }
+    }
+  ],
+  "maze": [
+    {
+      "id": "maze-01",
+      "src": "Escenario - 2.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/01-640.webp",
+        "960": "projects/maze/01-960.webp",
+        "1440": "projects/maze/01-1440.webp",
+        "1920": "projects/maze/01-1920.webp"
+      }
+    },
+    {
+      "id": "maze-02",
+      "src": "Datos generales - 3.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/02-640.webp",
+        "960": "projects/maze/02-960.webp",
+        "1440": "projects/maze/02-1440.webp",
+        "1920": "projects/maze/02-1920.webp"
+      }
+    },
+    {
+      "id": "maze-03",
+      "src": "Hallazgos principales - 4.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/03-640.webp",
+        "960": "projects/maze/03-960.webp",
+        "1440": "projects/maze/03-1440.webp",
+        "1920": "projects/maze/03-1920.webp"
+      }
+    },
+    {
+      "id": "maze-04",
+      "src": "Hallazgo 1 - 5.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/04-640.webp",
+        "960": "projects/maze/04-960.webp",
+        "1440": "projects/maze/04-1440.webp",
+        "1920": "projects/maze/04-1920.webp"
+      }
+    },
+    {
+      "id": "maze-05",
+      "src": "Hallazgo 2- 6.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/05-640.webp",
+        "960": "projects/maze/05-960.webp",
+        "1440": "projects/maze/05-1440.webp",
+        "1920": "projects/maze/05-1920.webp"
+      }
+    },
+    {
+      "id": "maze-06",
+      "src": "Hallazgo 3 - 7.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/06-640.webp",
+        "960": "projects/maze/06-960.webp",
+        "1440": "projects/maze/06-1440.webp",
+        "1920": "projects/maze/06-1920.webp"
+      }
+    },
+    {
+      "id": "maze-07",
+      "src": "Hallazgo 4- 8.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/07-640.webp",
+        "960": "projects/maze/07-960.webp",
+        "1440": "projects/maze/07-1440.webp",
+        "1920": "projects/maze/07-1920.webp"
+      }
+    },
+    {
+      "id": "maze-08",
+      "src": "Propuestas de mejora 2 - 10.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/08-640.webp",
+        "960": "projects/maze/08-960.webp",
+        "1440": "projects/maze/08-1440.webp",
+        "1920": "projects/maze/08-1920.webp"
+      }
+    },
+    {
+      "id": "maze-09",
+      "src": "Conclusiones.png",
+      "width": 1920,
+      "height": 1080,
+      "variants": {
+        "640": "projects/maze/09-640.webp",
+        "960": "projects/maze/09-960.webp",
+        "1440": "projects/maze/09-1440.webp",
+        "1920": "projects/maze/09-1920.webp"
+      }
+    }
+  ],
+  "public-services": [
+    {
+      "id": "public-services-01",
+      "src": "Atomic design.png",
+      "width": 3224,
+      "height": 1528,
+      "variants": {
+        "640": "projects/public-services/01-640.webp",
+        "960": "projects/public-services/01-960.webp",
+        "1440": "projects/public-services/01-1440.webp",
+        "1920": "projects/public-services/01-1920.webp",
+        "3224": "projects/public-services/01-3224.webp"
+      }
+    },
+    {
+      "id": "public-services-02",
+      "src": "Pantalla Final.png",
+      "width": 2412,
+      "height": 1352,
+      "variants": {
+        "640": "projects/public-services/02-640.webp",
+        "960": "projects/public-services/02-960.webp",
+        "1440": "projects/public-services/02-1440.webp",
+        "1920": "projects/public-services/02-1920.webp",
+        "2412": "projects/public-services/02-2412.webp"
+      }
+    }
+  ]
+}
