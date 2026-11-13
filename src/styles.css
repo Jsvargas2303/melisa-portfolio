@@ -878,3 +878,29 @@ p { line-height: 1.5; }
 .cds-appt { padding: 7px 12px; font-size: 12px; }
 .cds-swatches { padding: 7px 10px; }
 .cds-aa { padding: 4px 10px; font-size: 18px; }
+
+/* ---------- Maze v2: deltas + task chart ---------- */
+.delta { color: var(--ok); font-size: 11px; letter-spacing: 0.02em; text-transform: none; }
+.delta-note { color: var(--mut); }
+.hero-chips .delta { font-size: 9.5px; color: var(--ok); }
+.metrics-layout.v2 { grid-template-columns: 1fr; }
+.metrics-layout.v2 .metric-cards { grid-template-columns: repeat(3, 1fr); }
+.chart-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.task-chart { display: flex; flex-direction: column; gap: 12px; background: var(--panel-solid); }
+.task-chart h3 { font-size: 16px; }
+.task-plot { display: grid; grid-template-columns: 34px 1fr; gap: 8px; height: 230px; }
+.task-axis { position: relative; margin: 20px 0 22px; font-size: 10px; color: var(--mut); }
+.task-axis span { position: absolute; right: 0; transform: translateY(50%); line-height: 1; }
+.task-bars { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 0 8px; }
+.task-grid { position: absolute; inset: 20px 0 22px; pointer-events: none; }
+.task-grid span { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--line); }
+.task-col { position: relative; display: grid; grid-template-rows: 16px 1fr 18px; height: 100%; justify-items: center; gap: 4px; }
+.task-col .ease-val { align-self: end; }
+.task-bar {
+  align-self: end; width: 100%; max-width: 96px; height: var(--h); min-height: 6px; border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(180deg, var(--blue), color-mix(in srgb, var(--blue) 55%, var(--accent)));
+}
+.task-bar[data-i="2"] { background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--blue))); }
+.task-chart .ease-val { position: relative; }
+@media (max-width: 980px) { .chart-stack { grid-template-columns: 1fr; } .metrics-layout.v2 .metric-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) { .task-plot { height: 190px; } .task-bars { gap: 8px; } }

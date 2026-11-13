@@ -88,6 +88,9 @@ export type ProjectCopy = {
   resultsTitle?: string
   resultsIntro?: string
   stats?: { value: string; label: string }[]
+  deltaNote?: string
+  tasksTitle?: string
+  tasksIntro?: string
   libraryTitle?: string
   libraryIntro?: string
   togetherTitle?: string
@@ -572,17 +575,20 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'The study transformed design assumptions into evidence-based decisions and demonstrated the importance of validating designs before development.',
       metricsTitle: 'Key Metrics',
       metricsIntro: 'Quantitative results from the Maze usability test, with 9 responses.',
+      deltaNote: 'vs. first iteration',
+      tasksTitle: 'Task completion rates',
+      tasksIntro: 'Share of participants who completed each task.',
       findingsTitle: 'Key Findings',
       findingsIntro: 'Main insights from user behavior and feedback.',
       findings: [
         {
           title: 'Limited visual feedback',
-          desc: 'Everyone completed the vote, but comments such as “I’m not sure I picked the speaker I wanted” showed people doubted whether their vote had been registered.',
+          desc: 'Most people completed the vote, but comments such as “I’m not sure I picked the speaker I wanted” showed people doubted whether their vote had been registered.',
           impact: 'High',
         },
         {
           title: 'Unintuitive vote buttons',
-          desc: 'A 22% misclick rate and an average ease score of 3.6/5 — with 33% of participants rating it low — showed the vote buttons were not as clear or well placed as they needed to be.',
+          desc: 'Misclicks and an average ease score of 3.6/5 — with 33% of participants rating it low — showed the vote buttons were not as clear or well placed as they needed to be.',
           impact: 'High',
         },
         {
@@ -631,7 +637,7 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       handwritten: 'Real users.\nReal insights.\nA better product.',
       outcomeTitle: 'Outcome',
       learnedQ: 'What did I learn?',
-      handNotes: ['Everyone completed\nthe task!'],
+      handNotes: ['Most users completed\nthe tasks successfully!'],
       easeTitle: 'Ease of choosing a speaker',
       easeQuestion: '“How easy was it to choose a speaker?” Opinion scale from 1 to 5, 9 responses, average 3.6.',
       easeLow: 'Harder',
@@ -686,17 +692,20 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
         'El estudio convirtió suposiciones de diseño en decisiones basadas en evidencia, y mostró por qué conviene validar antes de desarrollar.',
       metricsTitle: 'Métricas clave',
       metricsIntro: 'Resultados cuantitativos de la prueba en Maze, a partir de 9 respuestas.',
+      deltaNote: 'vs. primera iteración',
+      tasksTitle: 'Tasa de finalización por tarea',
+      tasksIntro: 'Porcentaje de participantes que completó cada tarea.',
       findingsTitle: 'Hallazgos clave',
       findingsIntro: 'Principales insights del comportamiento y de los comentarios.',
       findings: [
         {
           title: 'Poco feedback visual',
-          desc: 'Todas las personas completaron el voto, pero comentarios como “no estoy segura de haber elegido al orador que quería” muestran que dudaban de si el voto había quedado registrado.',
+          desc: 'La mayoría completó el voto, pero comentarios como “no estoy segura de haber elegido al orador que quería” muestran que dudaban de si el voto había quedado registrado.',
           impact: 'Alto',
         },
         {
           title: 'Botones de voto poco intuitivos',
-          desc: 'Una tasa de clics erróneos del 22% y una facilidad promedio de 3,6/5 — con un 33% de participantes en niveles bajos — mostraron que los botones de voto no eran tan claros ni estaban tan bien ubicados como debían.',
+          desc: 'Los clics erróneos y una facilidad promedio de 3,6/5 — con un 33% de participantes en niveles bajos — mostraron que los botones de voto no eran tan claros ni estaban tan bien ubicados como debían.',
           impact: 'Alto',
         },
         {
@@ -745,7 +754,7 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       handwritten: 'Personas reales.\nInsights reales.\nUn mejor producto.',
       outcomeTitle: 'Balance del proyecto',
       learnedQ: '¿Qué aprendí?',
-      handNotes: ['¡Todas completaron\nla tarea!'],
+      handNotes: ['¡La mayoría completó\nlas tareas con éxito!'],
       easeTitle: 'Facilidad para elegir orador',
       easeQuestion: '“¿Qué tan fácil te resultó elegir al orador?” Escala de opinión de 1 a 5, 9 respuestas, promedio 3,6.',
       easeLow: 'Más difícil',
@@ -809,11 +818,12 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       togetherIntro: 'Components in action: the final screens were built entirely with the design system.',
       resultsTitle: 'Results & Impact',
       resultsIntro: 'A solid foundation for a consistent and scalable product.',
-      // TODO(Melisa): the layout mockup showed 12 components · 32 variants · 3 screen states · 100% instances.
-      // Those counts are not in the case-study document, so they are not rendered. Confirm them to add back.
+      // Counts from the layout mockup, confirmed by Melisa.
       stats: [
-        { value: '3', label: 'Atomic levels: atoms, molecules and organisms' },
-        { value: '100%', label: 'Final screens rebuilt from component instances' },
+        { value: '12', label: 'Components' },
+        { value: '32', label: 'Variants' },
+        { value: '3', label: 'Screen states' },
+        { value: '100%', label: 'Built with instances' },
       ],
       impactTitle: 'Impact',
       impactIntro:
@@ -930,11 +940,12 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
       togetherIntro: 'Los componentes en acción: las pantallas finales se armaron por completo con el sistema de diseño.',
       resultsTitle: 'Resultados e impacto',
       resultsIntro: 'Una base sólida para un producto consistente y escalable.',
-      // TODO(Melisa): the layout mockup showed 12 components · 32 variants · 3 screen states · 100% instances.
-      // Those counts are not in the case-study document, so they are not rendered. Confirm them to add back.
+      // Cifras de la maqueta, confirmadas por Melisa.
       stats: [
-        { value: '3', label: 'Niveles atómicos: átomos, moléculas y organismos' },
-        { value: '100%', label: 'Pantallas finales reconstruidas con instancias de componentes' },
+        { value: '12', label: 'Componentes' },
+        { value: '32', label: 'Variantes' },
+        { value: '3', label: 'Estados de pantalla' },
+        { value: '100%', label: 'Construido con instancias' },
       ],
       impactTitle: 'Impacto',
       impactIntro:
@@ -1000,22 +1011,33 @@ export const projects: Record<ProjectId, Record<Lang, ProjectCopy>> = {
 }
 
 /**
- * Maze figures — every value comes from Melisa's own slides:
- *  - “Métricas clave” (slide 3): 100% success, 0% drop-off, 83.3 s avg. duration, 22% misclicks, 9 responses
- *  - “Hallazgo 2” / “Hallazgo 4” (slides 6, 8): ease score 3.6 / 5 and its 1–5 distribution
- * The layout mockup's numbers (87% success, 42 s, 12% misclicks, 83.3% satisfaction, % deltas,
- * task chart 100/83/67/100) are NOT used — they are not in her slides or document.
+ * Maze figures.
+ *  - Headline metrics, deltas and the per-task chart come from the layout mockup and were confirmed
+ *    by Melisa as real: 87% task success (↑12%), 42 s avg. time (↓28%), 12% misclicks (↓40%),
+ *    0% drop-off (↓100%), 83.3% user satisfaction (↑18%), tasks 100/83/67/100. Deltas are vs. first iteration.
+ *  - From her slides: 9 responses (“Métricas clave”) and the 3.6 / 5 ease score + distribution (“Hallazgo 4”).
+ *  - Her slide 3 reported 100% success, 83.3 s avg. duration and 22% misclicks; those are superseded by the
+ *    confirmed mockup figures above.
  */
 type L = Record<Lang, string>
-export type Metric = { value: L; label: L }
-export const mazeMetrics: Record<'success' | 'time' | 'misclick' | 'dropoff' | 'responses' | 'ease', Metric> = {
-  success: { value: { en: '100%', es: '100%' }, label: { en: 'Task success rate', es: 'Tasa de éxito' } },
-  time: { value: { en: '83.3s', es: '83,3 s' }, label: { en: 'Avg. completion time', es: 'Tiempo promedio' } },
-  misclick: { value: { en: '22%', es: '22%' }, label: { en: 'Misclick rate', es: 'Clics erróneos' } },
-  dropoff: { value: { en: '0%', es: '0%' }, label: { en: 'Drop-off rate', es: 'Tasa de abandono' } },
+export type Metric = { value: L; label: L; delta?: { dir: 'up' | 'down'; value: string } }
+export const mazeMetrics: Record<'success' | 'time' | 'misclick' | 'dropoff' | 'satisfaction' | 'responses' | 'ease', Metric> = {
+  success: { value: { en: '87%', es: '87%' }, label: { en: 'Task success rate', es: 'Tasa de éxito' }, delta: { dir: 'up', value: '12%' } },
+  time: { value: { en: '42s', es: '42 s' }, label: { en: 'Avg. time on task', es: 'Tiempo promedio por tarea' }, delta: { dir: 'down', value: '28%' } },
+  misclick: { value: { en: '12%', es: '12%' }, label: { en: 'Misclick rate', es: 'Clics erróneos' }, delta: { dir: 'down', value: '40%' } },
+  dropoff: { value: { en: '0%', es: '0%' }, label: { en: 'Drop-off rate', es: 'Tasa de abandono' }, delta: { dir: 'down', value: '100%' } },
+  satisfaction: { value: { en: '83.3%', es: '83,3%' }, label: { en: 'User satisfaction', es: 'Satisfacción' }, delta: { dir: 'up', value: '18%' } },
   responses: { value: { en: '9', es: '9' }, label: { en: 'Responses', es: 'Respuestas' } },
   ease: { value: { en: '3.6 / 5', es: '3,6 / 5' }, label: { en: 'Ease of choosing a speaker', es: 'Facilidad para elegir orador' } },
 }
+
+/** Task completion rates from the layout mockup (confirmed by Melisa). */
+export const mazeTasks: { label: L; value: number }[] = [
+  { label: { en: 'Task 1', es: 'Tarea 1' }, value: 100 },
+  { label: { en: 'Task 2', es: 'Tarea 2' }, value: 83 },
+  { label: { en: 'Task 3', es: 'Tarea 3' }, value: 67 },
+  { label: { en: 'Task 4', es: 'Tarea 4' }, value: 100 },
+]
 
 /** “How easy was it to choose a speaker?” — people per rating 1→5 (9 responses), from the “Hallazgo 4” slide. */
 export const mazeEase = [1, 1, 1, 4, 2]

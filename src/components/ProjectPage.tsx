@@ -1,5 +1,5 @@
 import { usePrefs } from '../context/Prefs'
-import { mazeEase, mazeMetrics, nextOf, projects, type LibCopy, type ProjectCopy } from '../data/copy'
+import { mazeEase, mazeMetrics, mazeTasks, nextOf, type Metric, projects, type LibCopy, type ProjectCopy } from '../data/copy'
 import { projectImages } from '../data/images'
 import { site, type Lang, type ProjectId } from '../data/site'
 import { hrefHome, hrefProject } from '../hooks/useHashRoute'
@@ -200,6 +200,17 @@ export default function ProjectPage({ slug, notFound }: { slug?: ProjectId; notF
   )
 }
 
+function Delta({ m, note }: { m: Metric; note?: string }) {
+  if (!m.delta) return null
+  const up = m.delta.dir === 'up'
+  return (
+    <span className="delta mono small">
+      {up ? '↑' : '↓'} {m.delta.value}
+      {note && <span className="delta-note"> {note}</span>}
+    </span>
+  )
+}
+
 function HeroMetrics({ lang }: { lang: Lang }) {
   const items = [mazeMetrics.success, mazeMetrics.time, mazeMetrics.misclick, mazeMetrics.dropoff]
   return (
@@ -208,9 +219,36 @@ function HeroMetrics({ lang }: { lang: Lang }) {
         <li key={m.label.en}>
           <strong>{m.value[lang]}</strong>
           <span className="mono small">{m.label[lang]}</span>
+          <Delta m={m} />
         </li>
       ))}
     </ul>
+  )
+}
+
+function TaskChart({ p }: { p: ProjectCopy }) {
+  const { lang } = usePrefs()
+  const summary = mazeTasks.map((x) => `${x.label[lang]}: ${x.value}%`).join(', ')
+  return (
+    <figure className="task-chart panel">
+      <figcaption>
+        <h3>{p.tasksTitle}</h3>
+        <p className="muted small-p">{p.tasksIntro}</p>
+      </figcaption>
+      <div className="task-plot" role="img" aria-label={`${p.tasksTitle}. ${summary}.`}>
+        <div className="task-axis mono" aria-hidden>{[100, 75, 50, 25, 0].map((v) => <span key={v} style={{ bottom: `${v}%` }}>{v}%</span>)}</div>
+        <div className="task-bars">
+          <div className="task-grid" aria-hidden>{[100, 75, 50, 25, 0].map((v) => <span key={v} style={{ bottom: `${v}%` }} />)}</div>
+          {mazeTasks.map((x, i) => (
+            <div className="task-col" key={x.label.en}>
+              <span className="ease-val mono">{x.value}%</span>
+              <span className="task-bar" data-i={i} style={{ ['--h' as string]: `${x.value}%` }} />
+              <span className="ease-x mono">{x.label[lang]}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </figure>
   )
 }
 
@@ -287,10 +325,10 @@ function MazeBody({ p }: { p: ProjectCopy }) {
   const metrics = [
     { m: mazeMetrics.success, tone: 'ok', Icon: IconCheck },
     { m: mazeMetrics.time, tone: 'info', Icon: IconClock },
-    { m: mazeMetrics.misclick, tone: 'warn', Icon: IconCursor },
+    { m: mazeMetrics.misclick, tone: 'info', Icon: IconCursor },
     { m: mazeMetrics.dropoff, tone: 'ok', Icon: IconBolt },
-    { m: mazeMetrics.responses, tone: 'info', Icon: IconUsers },
-    { m: mazeMetrics.ease, tone: 'info', Icon: IconSmile },
+    { m: mazeMetrics.satisfaction, tone: 'ok', Icon: IconSmile },
+    { m: mazeMetrics.ease, tone: 'info', Icon: IconUsers },
   ]
   const findIcons = [IconEye, IconCursor, IconList, IconStar]
   return (
@@ -308,16 +346,20 @@ function MazeBody({ p }: { p: ProjectCopy }) {
           </div>
           <HandNote text={p.handNotes?.[0]} className="note-metrics" />
         </div>
-        <div className="metrics-layout">
+        <div className="metrics-layout v2">
           <ul className="metric-cards">
             {metrics.map(({ m, tone, Icon }) => (
               <li key={m.label.en} className={`metric ${tone}`}>
                 <span className="metric-top"><Icon /><span className="mono small">{m.label[lang]}</span></span>
                 <strong>{m.value[lang]}</strong>
+                <Delta m={m} note={m === mazeMetrics.success ? p.deltaNote : undefined} />
               </li>
             ))}
           </ul>
-          <EaseChart p={p} />
+          <div className="chart-stack">
+            <TaskChart p={p} />
+            <EaseChart p={p} />
+          </div>
         </div>
       </section>
 
@@ -481,7 +523,7 @@ function PublicBody({ p }: { p: ProjectCopy }) {
           {p.stats && (
             <ul className="stat-grid">
               {p.stats.map((s, i) => {
-                const Icon = [IconLayers, IconBolt][i] ?? IconStar
+                const Icon = [IconLayers, IconVariants, IconPhone, IconBolt][i] ?? IconStar
                 return (
                   <li key={s.label}>
                     <Icon />
