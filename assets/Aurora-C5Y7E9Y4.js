@@ -1,4 +1,4 @@
-import{u as v,r as a,j as r}from"./index-B3SVnIL6.js";import{C as m,u as f,V as s,a as d}from"./react-three-fiber.esm-DLIqtttV.js";const b=`
+import{u as v,r as a,j as r}from"./index-CkzfVG7b.js";import{C as m,u as f,V as s,a as d}from"./react-three-fiber.esm-CQ5MI27o.js";const b=`
 uniform float uTime; uniform vec2 uMouse; uniform float uScroll; uniform vec2 uRes; uniform float uDark;
 varying vec2 vUv;
 float blob(vec2 p, vec2 c, float r){ return smoothstep(r, 0.0, length(p-c)); }
